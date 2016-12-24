@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
   var proForm = $('#pro_form');
   
   // Get submit button
-  var submitBtn = $('#form-submit-btn');
+  var submitBtn = $('#form-signup-btn');
   
   // Set Stripe public key
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
