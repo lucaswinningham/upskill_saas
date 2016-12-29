@@ -20,6 +20,31 @@ class ProfilesController < ApplicationController
     end
   end
   
+  # GET to /users/:user_id/profile/edit
+  def edit
+    # Get correct user
+    @user = User.find(params[:user_id])
+    
+    # Create profile linked to this specific user
+    @profile = @user.profile
+  end
+  
+  # PATCH to /users/:user_id/profile
+  # def update
+  #   # Get correct user
+  #   @user = User.find(params[:user_id])
+    
+  #   # Create profile linked to this specific user
+  #   @profile = @user.build_profile(profile_params)
+    
+  #   if @profile.save
+  #     flash[:success] = "Profile updated!"
+  #     redirect_to user_path(params[:user_id])
+  #   else
+  #     render action :new
+  #   end
+  # end
+  
   private
     # To collect data from form, use strong parameters
     # Whitelist the form fields
