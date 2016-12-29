@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :only_current_user
+  
   # GET to /user/:user_id/profile/new
   def new
+    # Render blank profile details form
     @profile = Profile.new
   end
   
@@ -62,5 +66,14 @@ class ProfilesController < ApplicationController
                                       :contact_email,
                                       :description
       )
+    end
+    
+    # 
+    def only_current_user
+      # Get correct user
+      @user = User.find(params[:user_id])
+      
+      # Redirect other users
+      redirect_to root_url unless @user == current_user
     end
 end
